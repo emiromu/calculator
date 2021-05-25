@@ -55,6 +55,13 @@
     flex-wrap: wrap;
 }
 
+#delclear{
+    flex-direction: column;
+    width: 33%;
+    height: 25%;
+}
+
+
 #digipad{
     width: 285px;
     height: 420px;
@@ -73,4 +80,14 @@
 .operbtn{
     width: 100%;
     height: 20%;
+}
+
+#btnclear{
+    width: 100%;
+    height: 50%;
+}
+
+#btndel{
+    width: 100%;
+    height: 50%;
 }

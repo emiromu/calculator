@@ -11,6 +11,7 @@ const btn8 = document.querySelector("#btn8")
 const btn9 = document.querySelector("#btn9")
 const btn0 = document.querySelector("#btn0")
 const btnpoint = document.querySelector("#btnpoint")
+const btndel= document.querySelector("#btndel")
 const btnclear= document.querySelector("#btnclear")
 /* operator buttons */
 const btnadd = document.querySelector("#btnadd")
@@ -36,7 +37,7 @@ function multiply(a,b){
 };
 
 function divide(a,b){
-    return a/b;
+    return +((a/b).toFixed(30));
 };
 
 function operate(op,a,b){
@@ -61,6 +62,10 @@ function updateDisplay(char){
     if(displaystr.length ==0 && [0,1,2,3,4,5,6,7,8,9].indexOf(char)<0){
     displaystr = displaystr + '0'
     };
+    if(displaystr.length ==0 && char=='.'){
+        displaystr = displaystr + '0.'
+    };
+
     displaystr = displaystr + char;
     document.querySelector("#screen").textContent = displaystr;
     return displaystr;
@@ -82,7 +87,7 @@ function parseDisplay(str){
 
     for(let i=0; i<str.length; i++){
         //if character is a digit
-        if(['0','1','2','3','4','5','6','7','8','9'].indexOf(str[i])>-1){
+        if(['0','1','2','3','4','5','6','7','8','9','.'].indexOf(str[i])>-1){
             part.push(str[i]);
         }else{
             //push the existing part
@@ -151,6 +156,10 @@ btn9.addEventListener("click",function(){
 btnclear.addEventListener("click",function(){
     clearDisplay();
 });
+btndel.addEventListener("click",function(){
+    displaystr = displaystr.substr(0,displaystr.length-1);
+    document.querySelector("#screen").textContent = displaystr;
+});
 
 btnadd.addEventListener("click",function(){
     updateDisplay('+');
@@ -165,8 +174,8 @@ btndiv.addEventListener("click",function(){
     updateDisplay('/');
 });
 btneq.addEventListener("click",function(){
-    console.log("display string = "+displaystr);
-    parseDisplay(displaystr);
+    displaystr = parseDisplay(displaystr);
+    document.querySelector("#screen").textContent = displaystr;
 });
 
  
