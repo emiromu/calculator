@@ -74,7 +74,6 @@ function clearDisplay(){
 
 function parseDisplay(str){
     str=str.split('');
-    let result=0;
 
     //array of parts to be operated in order
     let parts=[];
@@ -99,19 +98,19 @@ function parseDisplay(str){
     }
     //push the last existing part
     parts.push(part);
-    console.log("parts length",parts.length);
-
+    
     //operate all parts
+    let newpart=[];
     while(parts.length>=3){
-        console.log("operate("+parts[1].join('')+","+parseInt(parts[0].join(''))+","+parseInt(parts[2].join(''))+")");
-        result = result + operate(parts[1].join(''),parseInt(parts[0].join('')),parseInt(parts[2].join('')));
+        newpart[0] = operate(parts[1].join(''),parseInt(parts[0].join('')),parseInt(parts[2].join('')));
         parts.shift();
         parts.shift();
         parts.shift();
+        parts.unshift(newpart);
     };
 
-    console.log(result);
-    return(result);
+    console.log(parts[0].join(''));
+    return(parts[0].join(''));
 };
 
 
