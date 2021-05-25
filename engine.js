@@ -74,14 +74,41 @@ function clearDisplay(){
 
 function parseDisplay(str){
     str=str.split('');
-    console.log(str);
-
     let result=0;
-    let leftpart=[];
-    let rightpart=[];
-    let operpart=[];
-    
 
+    //array of parts to be operated in order
+    let parts=[];
+    //integer part or operator part
+    let part=[];
+
+    for(let i=0; i<str.length; i++){
+        //if character is a digit
+        if(['0','1','2','3','4','5','6','7','8','9'].indexOf(str[i])>-1){
+            part.push(str[i]);
+        }else{
+            //push the existing part
+            parts.push(part);
+
+            //push the operator part
+            part=[];
+            part.push(str[i]);
+            parts.push(part);
+
+            part=[];
+        };
+    }
+    //push the last existing part
+    parts.push(part);
+    console.log("parts length",parts.length);
+
+    //operate all parts
+    while(parts.length>=3){
+        console.log("operate("+parts[1].join('')+","+parseInt(parts[0].join(''))+","+parseInt(parts[2].join(''))+")");
+        result = result + operate(parts[1].join(''),parseInt(parts[0].join('')),parseInt(parts[2].join('')));
+        parts.shift();
+        parts.shift();
+        parts.shift();
+    };
 
     console.log(result);
     return(result);
@@ -139,6 +166,7 @@ btndiv.addEventListener("click",function(){
     updateDisplay('/');
 });
 btneq.addEventListener("click",function(){
+    console.log("display string = "+displaystr);
     parseDisplay(displaystr);
 });
 
