@@ -41,6 +41,11 @@ function divide(a,b){
 };
 
 function operate(op,a,b){
+    if(b==0){
+        alert("Can't divide by 0 ;_;");
+        return NaN;
+    };
+
     switch(op){
         case "+":
             return add(a,b);
@@ -103,7 +108,7 @@ function parseDisplay(str){
     }
     //push the last existing part
     parts.push(part);
-    
+
     //operate all parts
     let newpart=[];
     while(parts.length>=3){
@@ -152,6 +157,11 @@ btn8.addEventListener("click",function(){
 });
 btn9.addEventListener("click",function(){
     updateDisplay(9);
+});
+btnpoint.addEventListener("click",function(){
+    if(displaystr.includes('.') == false){
+        updateDisplay('.');
+    };
 });
 btnclear.addEventListener("click",function(){
     clearDisplay();
