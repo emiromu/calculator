@@ -25,19 +25,19 @@ let displaystr='';
 
 
 function add(a,b){
-    return a+b;
+    return parseFloat(a)+parseFloat(b);
 };
 
 function substract(a,b){
-    return a-b;
+    return parseFloat(a)-parseFloat(b);
 };
 
 function multiply(a,b){
-    return a*b;
+    return parseFloat(a)*parseFloat(b);
 };
 
 function divide(a,b){
-    return +((a/b).toFixed(30));
+    return +((parseFloat(a)/parseFloat(b)).toFixed(30));
 };
 
 function operate(op,a,b){
@@ -107,7 +107,7 @@ function parseDisplay(str){
     //operate all parts
     let newpart=[];
     while(parts.length>=3){
-        newpart[0] = operate(parts[1].join(''),parseInt(parts[0].join('')),parseInt(parts[2].join('')));
+        newpart[0] = operate(parts[1].join(''),parseFloat(parts[0].join('')),parseFloat(parts[2].join('')));
         parts.shift();
         parts.shift();
         parts.shift();
