@@ -17,8 +17,9 @@
     width: 400px;
     height: 500px;
     border-width: 1px;
-    border-color: red;
-    border-style: dashed;
+    border-color:black;
+    border-style: solid;
+    background-color: gray;
 }
 
 .screen{
@@ -29,8 +30,12 @@
     height: 50px;
     padding-right: 10px;
     border-width: 1px;
-    border-color: blue;
-    border-style: dashed;
+    border-color: darkgray;
+    background-color: rgb(75, 161, 75);
+    color: black;
+    font-weight: bold;
+    font-size: large;
+    border-style: solid;
     align-items:center;
     justify-content: flex-end;
 }
@@ -42,15 +47,11 @@
     margin-top: 10px;
     height: 420px;
     border-width: 1px;
-    border-color: green;
-    border-style: dashed;
 }
 
 .pad{
     display: flex;
     border-width: 1px;
-    border-color: purple;
-    border-style: dashed;
     align-items: center;
     flex-wrap: wrap;
 }
@@ -74,7 +75,7 @@
 
 .digibtn{
     width: 33%;
-    height: 25%;
+    height: 20%;
 }
 
 .operbtn{
@@ -82,12 +83,3 @@
     height: 20%;
 }
 
-#btnclear{
-    width: 100%;
-    height: 50%;
-}
-
-#btndel{
-    width: 100%;
-    height: 50%;
-}
