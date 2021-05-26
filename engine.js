@@ -19,6 +19,8 @@ const btnsub = document.querySelector("#btnsub")
 const btnmul = document.querySelector("#btnmul")
 const btndiv = document.querySelector("#btndiv")
 const btneq = document.querySelector("#btneq")
+const btnsign = document.querySelector("#btnsign")
+const btnuseless = document.querySelector("#btnuseless")
 
 /* screen display */
 let displaystr='';
@@ -76,6 +78,19 @@ function updateDisplay(char){
     return displaystr;
 };
 
+function signDisplay(){
+    if(displaystr[0]=='-'){
+        displaystr = '+'+displaystr.substr(1,displaystr.length-1);
+    }else if (displaystr[0]=='+'){
+        displaystr = '-'+displaystr.substr(1,displaystr.length-1);
+    }else{
+        displaystr = '-'+displaystr;
+    }
+
+    document.querySelector("#screen").textContent = displaystr;
+    return displaystr;
+}
+
 function clearDisplay(){
     displaystr = '';
     document.querySelector("#screen").textContent = displaystr;
@@ -84,7 +99,8 @@ function clearDisplay(){
 
 function parseDisplay(str){
     str=str.split('');
-
+    //add a 0 in front of signed numbers to help parsing
+    if(str[0]=='-' || str[0]=='+'){str.unshift('0');};
     //array of parts to be operated in order
     let parts=[];
     //integer part or operator part
@@ -186,6 +202,12 @@ btndiv.addEventListener("click",function(){
 btneq.addEventListener("click",function(){
     displaystr = parseDisplay(displaystr);
     document.querySelector("#screen").textContent = displaystr;
+});
+btnsign.addEventListener("click",function(){
+    signDisplay();
+});
+btnuseless.addEventListener("click",function(){
+    alert(':)');
 });
 
  
